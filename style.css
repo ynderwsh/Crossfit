@@ -26,6 +26,7 @@
     --color-dark: #000000;
     --color-light: #FFFFFF;
     --color-dark-grey: #404040; 
+    --color-dark-alternate: #333333;
     --color-light-grey: #c4c4c4;
 
     --border-radius: 30px;
@@ -86,6 +87,19 @@ body{
     font-weight: 300;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
 .container{
     max-width: calc(var(--container-width)+var(--container-padding-x)*2);
     margin-inline: auto;
@@ -102,6 +116,8 @@ h1,h2,h3,h4,h5,h6{
     justify-content: space-between;
     gap: 20px;
     align-items: center;
+    padding-inline: 32px;
+    color: var(--color-dark-alternate);
 }
 
 .header-logo{
@@ -111,6 +127,7 @@ h1,h2,h3,h4,h5,h6{
 .header-menu-list{
     display: flex;
     column-gap: 50px;
+    flex-wrap: wrap;
 }
 
 .header-menu-link{
@@ -126,7 +143,7 @@ h1,h2,h3,h4,h5,h6{
 .header-menu-link.is-current::after{
     content: "";
     width: 5px;
-    height: 5px;
+    aspect-ratio: 1;
     background-color: currentColor;
     border-radius: 50%;
     margin-left: 7px;
@@ -146,11 +163,11 @@ h1,h2,h3,h4,h5,h6{
     align-items: center;
     width: 40px;
     color: #000000;
-    height: 40px;
+    aspect-ratio: 1;
     background-color: transparent;
     border: var(--border);
     padding-left: 8px;
-    border-radius: var(--border-radius);
+    border-radius: 50%;
     position: relative;
 }
 
@@ -164,4 +181,66 @@ h1,h2,h3,h4,h5,h6{
     width: 6px;
     background-color: var(--color-light);
     box-shadow: 16px 0 0 0 var(--color-light);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px){
+    .header{
+        flex-wrap: wrap;
+        row-gap: 10px;
+        padding-top: 20px;
+        padding-inline: 15px;
+    }
+    .header-menu{
+        order: 1;
+        flex-basis: 100%;
+    }
+    
+    .header-menu-link{
+        height: 50px;
+
+    }
+}
+
+
+@media (max-width: 767px){
+    .header{
+        padding-top: 10px;
+    }
+
+    .header-menu-list{
+        column-gap: 24px;
+    }
+
+    .header-menu-link{
+        height: 32px;
+    }
+
+    .header-actions{
+        column-gap: 15px;
+    }
+
+    .header-logo{
+        width: 121px;
+        height: 20.7;
+    }
+    
+    button{
+        height: 30px;
+        font-size: 10px;
+        width: 100px;
+        padding-left: 15px;
+        align-items: c;
+    }
 }
