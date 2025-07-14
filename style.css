@@ -183,15 +183,75 @@ h1,h2,h3,h4,h5,h6{
     box-shadow: 16px 0 0 0 var(--color-light);
 }
 
+.banner{
+    padding: 36px 70px;
+    min-height: 985px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: var(--color-light);
+    background-color: var(--color-dark-alternate);
+    text-transform: uppercase;
+}
+
+.banner-body{
+    text-transform: uppercase;
+}
+
+.banner-info{
+    display: flex;
+    align-items: end;
+    font-size: 30px;
+    line-height: 1.3;
+    font-weight: 300;
+}
+
+.banner-info::before{
+    content: '';
+    height: 194px;
+    aspect-ratio: 1; 
+    margin-right: 30px;   
+    background-image: url(./icons/bold-arrow-down-right.svg);
+}
 
 
+.banner-title{
+    font-size: 360px;
+    line-height: 1;
+}
+
+.banner-plagination-list{
+    display: flex;
+    justify-content: center;
+    column-gap: 14px;
+}
+
+.banner-plagination-item{
+    display: flex;
+}
+
+.banner-plagination-button{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    background-color: transparent;
+}
 
 
+.banner-plagination-button.is-current{
+    background-color: var(--color-light);
+}
 
-
-
-
-
+.banner-plagination-button.is-current::after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: var(--border);
+    border-radius: 50%;
+}
 
 
 
@@ -241,6 +301,6 @@ h1,h2,h3,h4,h5,h6{
         font-size: 10px;
         width: 100px;
         padding-left: 15px;
-        align-items: c;
+        align-items: center;
     }
 }
