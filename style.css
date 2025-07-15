@@ -41,6 +41,10 @@
     --container-padding-x: 15px;
 
     --transition-duration: 0.2s;
+
+    --header-hight: 90px;
+
+
 }
 
 a,
@@ -116,6 +120,7 @@ h1,h2,h3,h4,h5,h6{
     justify-content: space-between;
     gap: 20px;
     align-items: center;
+    min-height: var(--header-hight);
     padding-inline: 32px;
     color: var(--color-dark-alternate);
 }
@@ -136,7 +141,7 @@ h1,h2,h3,h4,h5,h6{
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1.2px;
-    height: 90px;
+    height: var(--header-hight);
     align-items: center;
 }
 
@@ -187,6 +192,7 @@ h1,h2,h3,h4,h5,h6{
     padding: 36px 70px;
     min-height: 985px;
     display: flex;
+    min-height: calc(100vh - var(--header-hight));
     flex-direction: column;
     justify-content: end;
     color: var(--color-light);
@@ -201,23 +207,25 @@ h1,h2,h3,h4,h5,h6{
 .banner-info{
     display: flex;
     align-items: end;
-    font-size: 30px;
+    font-size: min(30px, 1.56vw);
     line-height: 1.3;
     font-weight: 300;
 }
 
 .banner-info::before{
     content: '';
-    height: 194px;
-    aspect-ratio: 1; 
+    width: clamp(60px, 10.1vw, 194px);
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-right: 30px;   
     background-image: url(./icons/bold-arrow-down-right.svg);
 }
 
 
 .banner-title{
-    font-size: 360px;
     line-height: 1;
+    font-size: min(18.75vw, 360px);
 }
 
 .banner-plagination-list{
@@ -231,35 +239,59 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .banner-plagination-button{
-    display: inline-block;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 10px;
-    height: 10px;
     padding: 0;
     background-color: transparent;
+    border: none;
+    padding: 7px;
+    transition-duration: var(--transition-duration);
 }
 
 
-.banner-plagination-button.is-current{
-    background-color: var(--color-light);
-}
-
-.banner-plagination-button.is-current::after{
+.banner-plagination-button::after{
     content: '';
     width: 10px;
     height: 10px;
     border: var(--border);
     border-radius: 50%;
+    
 }
 
 
+.banner-plagination-button.is-current::after{
+    background-color: var(--color-light);
+}
+
+.banner-plagination-button:not(is-current):hover::after{
+    background-color: var(--color-light-grey);
+}
+
+.motivaion-item:nth-child(even){
+    background-color: var(--color-dark-alternate);
+}
+
+.motivation-card{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: clamp(30px, 10.42vw, 200px);
+}
+
+.motivaion-item:nth-child(even) .motivation-card{
+    flex-direction: row-reverse;
+}
 
 @media (max-width: 1024px){
     .header{
         flex-wrap: wrap;
         row-gap: 10px;
         padding-top: 20px;
+    }
+
+    .header,
+    .banner{
         padding-inline: 15px;
     }
     .header-menu{
@@ -269,8 +301,12 @@ h1,h2,h3,h4,h5,h6{
     
     .header-menu-link{
         height: 50px;
-
     }
+    
+    .banner{
+        row-gap: 10px;
+    }
+
 }
 
 
@@ -302,5 +338,13 @@ h1,h2,h3,h4,h5,h6{
         width: 100px;
         padding-left: 15px;
         align-items: center;
+    }
+
+    .banner-info{
+        margin-bottom: 20px;
+    }
+
+    .banner-info::before{
+    margin-right: 10px;   
     }
 }
